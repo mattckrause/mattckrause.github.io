@@ -10,6 +10,5 @@ categories:
 draft: true
 ---
 
-# This is a test site
 
 I am just learning how this works.
