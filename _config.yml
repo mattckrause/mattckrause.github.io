@@ -34,8 +34,8 @@ twitter_username: mattckrause
 github_username:  mattckrause
 
 # Build settings
-#theme: minima # <- default theme commented out
-theme: slate # (https://github.com/pages-themes/slate)
+theme: minima # <- default theme commented out
+#theme: slate # (https://github.com/pages-themes/slate)
 plugins:
   - jekyll-remote-theme
   - jekyll-feed
