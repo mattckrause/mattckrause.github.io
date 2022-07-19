@@ -8,4 +8,9 @@ permalink: /about/
 
 My name is Matt Krause. I am a Senior Product Manager for Microsoft Graph at Microsoft.
 
-This blog is an attempt to share information and how-tos for the things that I am working on.
+This blog is my place to share information and how-tos for the things that I am working on.
+
+You can follow me @
+
+- [Twitter](https://twitter.com/mattckrause)
+- [GitHub](https://github.com/mattckrause)
