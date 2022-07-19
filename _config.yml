@@ -14,11 +14,11 @@
 #
 # Site settings
 
-#permalink: /:title
-#markdown: kramdown
-#paginate: 5
-#paginate_path: "/:num/"
-#date_format: "%b %-d, %Y"
+permalink: /:title
+markdown: kramdown
+paginate: 5
+paginate_path: "/:num/"
+date_format: "%b %-d, %Y"
 
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
@@ -29,20 +29,20 @@ title: Matt Krause
 #email: 
 description: >- # this means to ignore newlines until "baseurl:"
   Sharing thoughts, how-tos, and solutions to issues.
-#baseurl: "" # the subpath of your site, e.g. /blog
-#url: "" # the base hostname & protocol for your site, e.g. http://example.com
-#twitter_username: mattckrause
-#github_username:  mattckrause
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: mattckrause
+github_username:  mattckrause
 
 # Build settings
-#theme: minima # <- default theme commented out
-theme: jekyll-theme-slate
-#plugins:
-#  - jekyll-remote-theme
-#  - jekyll-feed
-#  - jekyll-paginate
-#  - jekll-seo-tag
-#  - jekyll-sitemap
+theme: minima # <- default theme commented out
+#theme: jekyll-theme-slate
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-paginate
+  - jekll-seo-tag
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default.
