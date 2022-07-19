@@ -27,7 +27,7 @@ date_format: "%b %-d, %Y"
 title: Matt Krause
 email: 
 description: >- # this means to ignore newlines until "baseurl:"
-  A place where I share thoughts, how-tos, solutions to issues that I see.
+  Sharing thoughts, how-tos, and solutions to issues.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: mattckrause
