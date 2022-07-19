@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-![Matt Krause]({{ site.url }}/assets/about/me.jpg)
+![Matt Krause]({{ site.url }}/assets/about/me (Small).jpg)
 
 My name is Matt Krause. I am a Senior Product Manager for Microsoft Graph at Microsoft.
 
