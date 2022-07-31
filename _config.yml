@@ -13,15 +13,22 @@
 # https://learnxinyminutes.com/docs/yaml/
 #
 # Site settings
+
+permalink: /:title
+markdown: kramdown
+paginate: 5
+paginate_path: "/:num/"
+date_format: "%b %-d, %Y"
+
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+# in the templates via {{ site.myvariable }}.S
 
 name: Matt Krause
-title: Matt's Blog
+title: Matts Blog
 description: >- # this means to ignore newlines until "baseurl:"
-  Blogging about Microsoft Graph API.
+  Sharing thoughts, how-tos, and solutions to issues.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: mattckrause
@@ -29,9 +36,14 @@ github_username:  mattckrause
 linkedin_username: matthew-krause
 
 # Build settings
-theme: minima
+theme: minima # <- default theme commented out
+#theme: jekyll-theme-slate
 plugins:
+  - jekyll-remote-theme
   - jekyll-feed
+  - jekyll-paginate
+  - jekll-seo-tag
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default.
