@@ -12,6 +12,5 @@ This blog is my place to share information and how-tos for the things that I am 
 
 You can follow me @
 
-- [Twitter](https://twitter.com/mattckrause)
 - [GitHub](https://github.com/mattckrause)
 - [LinkedIn](https://www.linkedin.com/in/matthew-krause/)
