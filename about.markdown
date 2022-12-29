@@ -14,4 +14,4 @@ You can follow me @
 
 - [GitHub](https://github.com/mattckrause)
 - [LinkedIn](https://www.linkedin.com/in/matthew-krause/)
-- [Mastodon](https://hachyderm.io/mattckrause)
+- [Mastodon](https://hachyderm.io/@mattckrause)
