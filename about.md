@@ -4,4 +4,8 @@ title: About
 permalink: /about/
 ---
 
-Another minimal style of Jekyll theme for writers.
+![Picture of me](/Logo(blackBG).png)
+
+My Name is Matt Krause. I am a PM on the Microsoft Graph team at Microsoft. I spend a lot of my time talking about Microsoft Graph Data Connect (MGDC).
+
+I am a former Microsoft CE that focused on Microsoft Exchange and PowerShell.
