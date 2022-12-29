@@ -1,18 +1,43 @@
----
-title: Minimal Text
-baseurl: "/Minimal-Text"
-desc: A minimal blog for off-topic blog entries.
-about: I am a web developer, software engineer, and project manager currently living in Collinsville, Illinois. I'm a little weird but pretty friendly.
-image: https://pinto-light.glitch.me/?width=500&height=500&url=https://i.imgur.com/mxUVc2x.jpg&extension=jpg
-excerpt_separator: "<!-- more -->"
-markdown: kramdown
-gems:
-- jekyll-paginate
+title: Matt's Blog
+description: My space to share what I'm working on.
+author: Matt Krause
+avatar: /Logo(blackGB).png
+email: ngzhio@gmail.com
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+
+paginate: 10
+
+# Uncomment the below line and set the tracking ID for enabling Google Analytics
+# 
+# google_analytics: 
+
+# Uncomment the below lines and set the Disqus shortname for enabling Disqus
+# 
+# disqus:
+
+# Jekyll
+# ======
 exclude:
-  - .jekyll-metadata
+  - scripts/
   - README.md
-  - CNAME
-paginate: 5
-paginate_path: "/:num/"
-highlighter: rouge
-permalink: pretty
+  - jekyll-theme-hamilton.gemspec
+
+# Jekyll SEO Tag (Optional)
+# =========================
+#twitter:
+  #username: ngzhio
+  #card: summary
+logo: Logo(blackGB).png
+social:
+  name: Matt Krause
+  links:
+    - https://hachyderm.io/@mattckrause
+    - https://www.facebook.com/matthew-krause
+    - https://github.com/mattckrause
+#google_site_verification: u4WXQl0Eu66rsQo2kRdCNx
+lang: en
