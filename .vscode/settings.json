@@ -1,16 +1,2 @@
 {
-	"frontMatter.content.pageFolders": [
-		{
-			"title": "posts",
-			"path": "[[workspace]]/_posts"
-		},
-		{
-			"title": "posts",
-			"path": "[[workspace]]/_posts"
-		}
-	],
-	"frontMatter.framework.id": "jekyll",
-	"frontMatter.content.publicFolder": "assets",
-	"frontMatter.taxonomy.tags": [],
-	"frontMatter.taxonomy.categories": []
 }

@@ -1,7 +1,7 @@
 title: Matt's Blog
 description: My space to share what I'm working on.
 author: Matt Krause
-avatar: Logo(blackBG).png
+avatar: /assets/Me.jpeg
 #email: 
 skin: daylight
 
@@ -11,7 +11,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
 
-paginate: 10
+paginate: 5
 
 # Uncomment the below line and set the tracking ID for enabling Google Analytics
 # 
@@ -24,13 +24,11 @@ paginate: 10
 # Jekyll
 # ======
 exclude:
-  - scripts/
   - README.md
-  - jekyll-theme-hamilton.gemspec
 
 # Jekyll SEO Tag (Optional)
 # =========================
-logo: Logo(blackBG).png
+logo: /Assets/Logo(blackBG).png
 social:
   name: Matt Krause
   links:
