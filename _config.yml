@@ -1,7 +1,7 @@
 title: Matt's Blog
 description: My space to share what I'm working on.
 author: Matt Krause
-avatar: /assets/Me.jpeg
+avatar: /assets/Me.jpg
 #email: 
 skin: daylight
 
@@ -28,7 +28,7 @@ exclude:
 
 # Jekyll SEO Tag (Optional)
 # =========================
-logo: /Assets/Logo(blackBG).png
+logo: /assets/Me.jpg
 social:
   name: Matt Krause
   links:
