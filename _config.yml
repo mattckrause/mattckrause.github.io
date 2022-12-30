@@ -3,6 +3,7 @@ description: My space to share what I'm working on.
 author: Matt Krause
 avatar: Logo(blackBG).png
 #email: 
+skin: daylight
 
 plugins:
   - jekyll-seo-tag
@@ -23,7 +24,9 @@ paginate: 10
 # Jekyll
 # ======
 exclude:
+  - scripts/
   - README.md
+  - jekyll-theme-hamilton.gemspec
 
 # Jekyll SEO Tag (Optional)
 # =========================
@@ -32,7 +35,7 @@ social:
   name: Matt Krause
   links:
     - https://hachyderm.io/@mattckrause
-    - https://www.facebook.com/matthew-krause
+    - https://www.linkedin.com/matthew-krause
     - https://github.com/mattckrause
 #google_site_verification: u4WXQl0Eu66rsQo2kRdCNx
 lang: en
