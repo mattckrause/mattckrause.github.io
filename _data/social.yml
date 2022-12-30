@@ -1,10 +1,9 @@
 - title: LinkedIn
   url: https://www.linkedin.com/in/matthew-krause/
-  icon: /assets/logos/LinkedIn.jpg
+  icon: fab fa-linkedin
 - title: GitHub
   url: https://github.com/mattckrause
-  icon: /assets/logos/github.jpg
-#  icon: fab fa-github
+  icon: fab fa-github
 - title: Mastodon
   url: https://hachyderm.io/@mattckrause
-  icon: /assets/logos/Mastodon.png
+  icon: fa fa-retweet
