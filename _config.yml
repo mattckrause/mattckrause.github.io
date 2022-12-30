@@ -1,8 +1,8 @@
 title: Matt's Blog
 description: My space to share what I'm working on.
 author: Matt Krause
-avatar: Logo(blackGB).png
-#email: ngzhio@gmail.com
+avatar: Logo(blackBG).png
+#email: 
 
 plugins:
   - jekyll-seo-tag
@@ -23,13 +23,11 @@ paginate: 10
 # Jekyll
 # ======
 exclude:
-  - scripts/
   - README.md
-  - jekyll-theme-hamilton.gemspec
 
 # Jekyll SEO Tag (Optional)
 # =========================
-logo: Logo(blackGB).png
+logo: Logo(blackBG).png
 social:
   name: Matt Krause
   links:
