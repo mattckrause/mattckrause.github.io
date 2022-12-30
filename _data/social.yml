@@ -1,9 +1,10 @@
-#- title: Twitter
-#  url: https://twitter.com/ngzhio
-#  icon: fab fa-twitter
+- title: LinkedIn
+  url: https://www.linkedin.com/in/matthew-krause/
+  icon: /assets/logos/LinkedIn.jpg
 - title: GitHub
   url: https://github.com/mattckrause
-  icon: fab fa-github
+  icon: /assets/logos/github.jpg
+#  icon: fab fa-github
 - title: Mastodon
   url: https://hachyderm.io/@mattckrause
-  icon: 
+  icon: /assets/logos/Mastodon.png
