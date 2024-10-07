@@ -16,6 +16,9 @@
   "frontMatter.taxonomy.tags": [
     "Microsoft Graph",
     "Microsoft Graph Data Connect",
-    "Microsoft PowerShell"
+    "Microsoft PowerShell",
+    "Microsoft Copilot Extensibility",
+    "Microsoft Graph Connectors",
+    "Micorosft Declarative Agent"
   ]
 }
