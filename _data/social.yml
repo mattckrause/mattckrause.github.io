@@ -1,9 +1,9 @@
 - title: LinkedIn
   url: https://www.linkedin.com/in/matthew-krause/
-  icon: fab fa-linkedin
+  icon: fa fa-linkedin
 - title: GitHub
   url: https://github.com/mattckrause
-  icon: fab fa-github
+  icon: fa fa-github
 - title: BlueSky
   url: https://bsky.app/profile/mattckrause.bsky.social
-  icon: fab fa-bluesky
+  icon: fa fa-bluesky
