@@ -1,0 +1,11 @@
+{
+    "frontMatter.framework.id": "other",
+    "frontMatter.content.publicFolder": "",
+    "frontMatter.content.pageFolders": [
+        {
+            "title": "source",
+            "path": "[[workspace]]/source"
+        }
+    ],
+    "frontMatter.git.enabled": true
+}
