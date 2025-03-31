@@ -1,0 +1,10 @@
+{
+    "frontMatter.framework.id": "other",
+    "frontMatter.content.publicFolder": "",
+    "frontMatter.content.pageFolders": [
+        {
+            "title": "content",
+            "path": "[[workspace]]/content"
+        }
+    ]
+}
