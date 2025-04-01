@@ -12,4 +12,5 @@ jobs:
       id-token: "write"
     with:
       settings: "pelicanconf.py"
+      requirements: pelican[markdown]
       python: "3.12"
