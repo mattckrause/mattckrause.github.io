@@ -1,4 +1,4 @@
-﻿name: Deploy Site on GitHub Pages
+﻿name: Deploy Site
 on:
   push:
     branches: ["main"]
@@ -12,3 +12,4 @@ jobs:
       id-token: "write"
     with:
       settings: "pelicanconf.py"
+      python: "3.12"
