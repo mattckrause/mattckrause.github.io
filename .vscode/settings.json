@@ -6,5 +6,7 @@
             "title": "content",
             "path": "[[workspace]]/content"
         }
-    ]
+    ],
+    "[markdown]": {
+    }
 }
