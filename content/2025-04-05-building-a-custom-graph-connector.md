@@ -12,28 +12,27 @@ categories:
 
 ## Intro
 
-Microsoft Copilot is a pretty amazing piece of technology. Having an LLM grounded in your M365 data has obvious benifits. However, it's also worth noting that
-it's likely that not all your data lives within your M365 tenant. For that scenario, there is Copilot extensibility, providiong you the ability to extent the
-functionality of Copilot in a few ways. In the simplest terms Copilot extensibility allows you expand the **knowledge** (the data Copilot is grounded on) and/or the **skills** (the tasks Copilot is able to perform). Graph connectors allow you to extend the knowledge, while plugins allow you to extend knowledge and actions.
-There are pros/cons to each of these options and there are definately reasons to choose one over the other, but I'll touch base on those at a later time. For now I want to focus on Graph connectors. Specifically building my own Graph connector to ingest the content I want from an external API.
+Microsoft Copilot is an impressive piece of technology. Having a large language model (LLM) grounded in your Microsoft 365 data brings clear benefits. But it’s important to recognize that not all your data necessarily lives within your M365 tenant. That’s where Copilot extensibility comes in—it gives you the ability to expand Copilot’s functionality in a few key ways.
 
-Believe it or not, I am **NOT** a developer, so as I started this process I coulnd't just jump into the deep end and build a connector. I was going to have to take little steps in the
-process and build up to a GC. Luckily, I do know PowerShell pretty well and understand Graph APIs so I thought that would be a great place to start. It turns out,
-as a learning excersice, it was great. It allowed me to incrementially build upon what I already knew and get a simple connector built and deployed into my dev environment.
+At a high level, Copilot extensibility lets you expand either the knowledge (the data Copilot is grounded on) or the skills (the tasks Copilot can perform). Graph connectors allow you to extend Copilot’s knowledge, while plugins can extend both knowledge and actions. Each option has its pros and cons, and there are definitely scenarios where one makes more sense than the other—but I’ll save that full comparison for another post.
 
-## The Plan
+For now, I want to focus on Graph connectors—specifically, building my own to ingest content from an external API.
 
-To start simple, my plan was as follows:
+Believe it or not, I’m **NOT** a developer. So when I started this journey, I couldn’t just dive in and build a connector from scratch. I had to take it step by step. Fortunately, I am comfortable with PowerShell and familiar with Graph APIs, so that’s where I began. As a learning exercise, it turned out to be a great approach. It allowed me to build incrementally on what I already knew and ultimately get a simple connector up and running in my dev environment.
 
-  1. Simplify process into minimal steps for a PowerShell script.
-  2. Identify specific APIs and permissions needed.
-  3. Find or make a sample dataset to use for development.
-  4. Deploy the GC.
-  5. Move on to a programming language and add more functionality.
-  6. Host it in Azure App Services.
-  7. Build Deployment process
+## The End Goal
 
-Obviously, that is a bit much to put in one blog post, so I am splitting that up across several posts documenting the process including all the steps I performed with links to documentation and any code, as terrible as it may be, that I have written to build the Graph connector.
+To keep things manageable, I started with a simple plan:
+
+1. Break the process down into minimal steps using PowerShell.
+2. Identify the specific APIs and permissions required.
+3. Create or find a sample dataset for development.
+4. Deploy the Graph Connector.
+5. Transition to a programming language to add more functionality.
+6. Host the solution in Azure App Services.
+7. Build a deployment process.
+
+Clearly, that’s too much to cover in a single blog post. So I’m breaking it up into a series of posts that walk through each step of the process. I’ll include links to relevant documentation and share any code I’ve written—warts and all—as I build out the Graph Connector.
 
 ## Steps 1 and 2
 
@@ -121,7 +120,7 @@ Function New-ExternalConnection
     catch{
         write-host "Error creating connection $ConnectionName"
     }
-    start-sleep -s 20
+    start-sleep -s 5
     try{
         Update-MgExternalConnectionSchema -ExternalConnectionId $ConnectionName -BodyParameter $schemaParams
     }
@@ -184,4 +183,48 @@ Set-MgExternalConnectionItem -ExternalConnectionId $externalConnectionId -Extern
 }
 ```
 
-With these 3 steps complete, we now have a Graph Connector deployed to our M365 tenant. This script doesn't include any
+My script calls the functions as part of the "Main" section:
+
+```PowerShell
+#Main Script
+Connect-ToGraph
+
+$ConnectionName = "PowerShellGraphConnector"
+
+if ($Process.ToLower() -eq "install")
+{
+    New-ExternalConnection -ConnectionName $ConnectionName
+}
+elseif ($Process.ToLower() -eq "uninstall")
+{
+    Remove-ExternalConnection -ConnectionName $ConnectionName
+}
+elseif ($Process.ToLower() -eq "writeitems")
+{
+    Import-Csv -Path "C:\fictitious_companies.csv" | ForEach-Object {
+        Write-Object -externalConnectionId $ConnectionName -item $_.name -externalItemId $_.name -content $_.description
+    } 
+}
+else
+{
+    Write-Host "Invalid process specified. Use 'install','uninstall', or 'writeitems."
+}
+
+#Disconnect from Graph when complete!
+Disconnect-MGGraph
+```
+
+To run the script you would call the script passing in a paramater for what you wish to do. For example:
+
+``` PowerShell
+New-GraphConnector.ps1 -Install
+```
+
+ Available parameters for the script incldue:
+
+- install
+- uninstall
+- writeitems
+
+---
+
