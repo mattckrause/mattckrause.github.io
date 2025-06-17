@@ -12,7 +12,7 @@ categories:
 
 ## Intro
 
-Microsoft Copilot is an impressive piece of technology. Having a large language model (LLM) grounded in your Microsoft 365 data brings clear benefits. But it’s important to recognize that not all your data necessarily lives within your M365 tenant. That’s where Copilot extensibility comes in—it gives you the ability to expand Copilot’s functionality in a few key ways.
+Microsoft Copilot is a useful piece of technology. Having a large language model (LLM) grounded in your Microsoft 365 data brings clear benefits. But it’s important to recognize that not all your data lives within your M365 tenant. That’s where Copilot extensibility steps in. It gives you the ability to expand Copilot’s functionality in a few key ways.
 
 At a high level, Copilot extensibility lets you expand either the knowledge (the data Copilot is grounded on) or the skills (the tasks Copilot can perform). Graph connectors allow you to extend Copilot’s knowledge, while plugins can extend both knowledge and actions. Each option has its pros and cons, and there are definitely scenarios where one makes more sense than the other—but I’ll save that full comparison for another post.
 
@@ -24,17 +24,17 @@ Believe it or not, I’m **NOT** a developer. So when I started this journey, I 
 
 To keep things manageable, I started with a simple plan:
 
-1. Break the process down into minimal steps using PowerShell.
-2. Identify the specific APIs and permissions required.
+1. Identify the specific APIs and permissions required.
+2. Break the process down into minimal steps using PowerShell.
 3. Create or find a sample dataset for development.
 4. Deploy the Graph Connector.
 5. Transition to a programming language to add more functionality.
 6. Host the solution in Azure App Services.
 7. Build a deployment process.
 
-Clearly, that’s too much to cover in a single blog post. So I’m breaking it up into a series of posts that walk through each step of the process. I’ll include links to relevant documentation and share any code I’ve written—warts and all—as I build out the Graph Connector.
+Clearly, that’s too much to cover in a single blog post. So I’m breaking it up into a series of posts that walk through each step of the process. I’ll include links to relevant documentation and share any code I’ve written as I build out the Graph Connector.
 
-## Steps 1 and 2
+## Steps 1 and 2 covered in this blog post
 
 These steps were pretty simple as the Graph connector development process is pretty well documented. Using [this documentation](https://learn.microsoft.com/en-us/graph/connecting-external-content-build-quickstart), I simplified the processes to 3 core steps:
 
@@ -44,7 +44,7 @@ These steps were pretty simple as the Graph connector development process is pre
 
 I now had everything I needed to get started.
 
-First thing was to [create an app registration](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app?tabs=certificate%2Cexpose-a-web-api) with the correct permissions. Not a difficult task if you've ever done it before.
+First thing was to [create an app registration](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app?tabs=certificate%2Cexpose-a-web-api) with the correct permissions.
 
 The important bits here are:
 
@@ -64,7 +64,7 @@ Finally, ensure you have the correct permissions assigned **AND** consented to:
 
 ## The PowerShell Script
 
-You can find my script [here](https://github.com/mattckrause/MSGraph/tree/Main/ExternalItems). I am using the Microsoft Graph PowerShell SDK and will summarize the important pieces below:
+You can find my full script [here](https://github.com/mattckrause/MSGraph/tree/Main/ExternalItems). I am using the Microsoft Graph PowerShell SDK and will summarize the important pieces below:
 
 The PowerShell script authenticates against my Entra ID app registreation. I use a .env file to hold my auth data so you would need to do something similar:
 
@@ -80,7 +80,7 @@ Function Connect_ToGraph
 }
 ```
 
-Once successfully authenticated, I then proceed to create the external connection and the schema. You'll need to pass the id, name, and description properties to the New-MgExternalConnection cmdlet to create the external connection. The schema creation is a separate task. In my script I create hashtable $schemaParams to hold the property config for the schema, and pass this to the Update-MgExternalConnectionSchema cmdlet. This is a pretty quick process, but I added a start-sleep command to pause for a few seconds between the creation of the ExternalItem and the Schema just to ensure the external connection is successfully created before attempting to register the schema.
+Once successfully authenticated, I then proceed to create the external connection and the schema. You'll need to pass the id, name, and description properties to the New-MgExternalConnection cmdlet to create the external connection. The schema creation is a separate task. In my script I create a hashtable *$schemaParams* to hold the property config for the schema, and pass this to the Update-MgExternalConnectionSchema cmdlet. This is a pretty quick process, but I added a start-sleep command to pause for a few seconds between the creation of the ExternalItem and the Schema just to ensure the external connection is successfully created before attempting to register the schema.
 
 ``` PowerShell
 Function New-ExternalConnection
@@ -130,7 +130,9 @@ Function New-ExternalConnection
 }
 ```
 
-With the first two steps complete, we have the shell of a GC and are ready to write items to the created Graph connector. At this point, rather than connect to an actual external API, I used Copilot to create a very simple .CSV list of fictional companies with a discription for each. I just read that file in and process each object mapping properties to the scheam I created.
+It should be noted at this point that the Schema creation process can take between 5 and 15 minutes. The documentation recomends using the location response header to get the current status of the schema creation operation.
+
+With the first two steps complete, we have the shell of a Graph connector and are ready to write items to the created Graph connector. Rather than connect to an actual external API, to keep this first attempt simple, I used Copilot to create a .CSV list of fictional companies with a discription for each. The script reads that file in and processes each object mapping properties to the scheam I created.
 
 ```PowerShell
 Function Write-Object
@@ -177,13 +179,13 @@ Function Write-Object
             value = $content
             type = "text"
         }
-}
+    }
 
 Set-MgExternalConnectionItem -ExternalConnectionId $externalConnectionId -ExternalItemId $externalItemId -BodyParameter $params
 }
 ```
 
-My script calls the functions as part of the "Main" section:
+We've looked at the 3 functions I built and now we can see how I call each of the functions:
 
 ```PowerShell
 #Main Script
@@ -228,3 +230,4 @@ New-GraphConnector.ps1 -Install
 
 ---
 
+And just like that, I have a simple Graph connector build using PowerShell that I can use to ingest external items into my tenant.
