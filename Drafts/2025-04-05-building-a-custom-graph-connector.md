@@ -1,6 +1,6 @@
 ---
-title: My Adventure in Building a Custom Graph Connector - Part 1
-description: The process I went through in building a custom Graph connector.
+title: My Adventure in Building a Custom Copilot Connector - Part 1
+description: The process I went through in building a custom Copilot connector.
 date: 2025-04-05T14:11:50.658Z
 preview: /content/images/GCAdventure.png
 tags:
@@ -10,13 +10,11 @@ categories:
     - Blog
 ---
 
-## Intro
-
 Microsoft Copilot is a useful piece of technology. Having a large language model (LLM) grounded in your Microsoft 365 data brings clear benefits. But it’s important to recognize that not all your data lives within your M365 tenant. That’s where Copilot extensibility steps in. It gives you the ability to expand Copilot’s functionality in a few key ways.
 
-At a high level, Copilot extensibility lets you expand either the knowledge (the data Copilot is grounded on) or the skills (the tasks Copilot can perform). Graph connectors allow you to extend Copilot’s knowledge, while plugins can extend both knowledge and actions. Each option has its pros and cons, and there are definitely scenarios where one makes more sense than the other—but I’ll save that full comparison for another post.
+At a high level, Copilot extensibility lets you expand either the knowledge (the data Copilot is grounded on) or the skills (the tasks Copilot can perform). Copilot connectors (previously Graph connectors) allow you to extend Copilot’s knowledge, while plugins can extend both knowledge and actions. Each option has its pros and cons, and there are definitely scenarios where one solution makes more sense than the other, but I’ll save a detailed comparison for another post.
 
-For now, I want to focus on Graph connectors—specifically, building my own to ingest content from an external API.
+For now, I want to focus on Copilot connectors. More specifically, building my own to ingest some external content.
 
 Believe it or not, I’m **NOT** a developer. So when I started this journey, I couldn’t just dive in and build a connector from scratch. I had to take it step by step. Fortunately, I am comfortable with PowerShell and familiar with Graph APIs, so that’s where I began. As a learning exercise, it turned out to be a great approach. It allowed me to build incrementally on what I already knew and ultimately get a simple connector up and running in my dev environment.
 
@@ -26,15 +24,14 @@ To keep things manageable, I started with a simple plan:
 
 1. Identify the specific APIs and permissions required.
 2. Break the process down into minimal steps using PowerShell.
-3. Create or find a sample dataset for development.
-4. Deploy the Graph Connector.
-5. Transition to a programming language to add more functionality.
-6. Host the solution in Azure App Services.
-7. Build a deployment process.
+3. Deploy the Copilot connector.
+4. Transition to a programming language to add more functionality.
+5. Host the solution in Azure App Services.
+6. Build a deployment process.
 
 Clearly, that’s too much to cover in a single blog post. So I’m breaking it up into a series of posts that walk through each step of the process. I’ll include links to relevant documentation and share any code I’ve written as I build out the Graph Connector.
 
-## Steps 1 and 2 covered in this blog post
+## Steps 1 - 3 covered in this blog post
 
 These steps were pretty simple as the Graph connector development process is pretty well documented. Using [this documentation](https://learn.microsoft.com/en-us/graph/connecting-external-content-build-quickstart), I simplified the processes to 3 core steps:
 
@@ -230,4 +227,4 @@ New-GraphConnector.ps1 -Install
 
 ---
 
-And just like that, I have a simple Graph connector build using PowerShell that I can use to ingest external items into my tenant.
+In this post I shared my experience creating a Copilot connector using PowerShell. In the posts to follow, I will take what I've learned here and create a Copilot connector using python and adding some additional functionality.
