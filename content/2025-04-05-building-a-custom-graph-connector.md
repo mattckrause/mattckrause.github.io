@@ -1,7 +1,8 @@
 ---
 title: My Adventure in Building a Custom Copilot Connector - Part 1
 description: The process I went through in building a custom Copilot connector. Part 1 focusing on quick and dirty Powershell steps to get a custom connector up and running.
-date: 2025-07-16T22:11:50.692Z
+date: 2025-07-16T22:36:05.686Z
+status: draft
 preview: /content/images/GCAdventure.png
 tags:
     - Custom Connector
@@ -13,7 +14,6 @@ tags:
 categories:
     - Blog
 keywords:
-    - PowerShell
     - Copilot Connector
 ---
 
@@ -21,7 +21,7 @@ Microsoft Copilot is a useful piece of technology. Having a large language model
 
 At a high level, Copilot extensibility lets you expand either the knowledge (the data Copilot is grounded on) or the skills (the tasks Copilot can perform). Copilot connectors (previously Graph connectors) allow you to extend Copilot’s knowledge, while plugins can extend both knowledge and actions. Each option has its pros and cons, and there are definitely scenarios where one solution makes more sense than the other, but I’ll save a detailed comparison for another post.
 
-For now, I want to focus on Copilot connectors. More specifically, building my own to ingest some external content.
+For now, I want to focus on Copilot connectors. More specifically, building my own custom connector to ingest some external content.
 
 Believe it or not, I’m **NOT** a developer. So when I started this journey, I couldn’t just dive in and build a connector from scratch. I had to take it step by step. Fortunately, I am comfortable with PowerShell and familiar with Graph APIs, so that’s where I began. As a learning exercise, it turned out to be a great approach. It allowed me to build incrementally on what I already knew and ultimately get a simple connector up and running in my dev environment.
 
@@ -66,11 +66,11 @@ You'll need to ensure you have the correct permissions assigned **AND** consente
 - ExternalConnection.ReadWrite.OwnedBy
 - ExternalItem.ReadWriet.OwnedBy
 
-![Image showing the required Graph permissions shown in the app registration including that they have been granted admin consent](/content/images/1-perms.png)
+![Image showing the required Graph permissions shown in the app registration including that they have been granted admin consent]({attach}/images/1-perms.png)
 
 ## The PowerShell Commands
 
-The [Graph PowerShell SDK](https://learn.microsoft.com/powershell/microsoftgraph/installation?view=graph-powershell-1.0) provides an easy method to authenticate using the Entra app registreation previously created. For security purposes, I use a .env file to hold my auth data so I don't store any credentials in plain text. I've included two code snippets to show authentication using both Certificates and secrets. The snippets read the .env file and passes the appID, tenantID and certificate thumbprint/client secret to the 'Connect-MGGraph' cmdlet:
+The [Graph PowerShell SDK](https://learn.microsoft.com/powershell/microsoftgraph/installation?view=graph-powershell-1.0) provides an easy method to authenticate using the Entra app registreation previously created. For security purposes, I use a .env file to hold my auth data so I don't store any credentials in plain text. I've included two code snippets to show authentication using both Certificates and secrets. The snippets read the .env file and passes the appID, tenantID and certificate thumbprint/client secret to the **Connect-MgGraph** cmdlet:
 
 ```PowerShell
 #Authentication using Certificate
@@ -79,7 +79,7 @@ $appID = ($data[0].split("="))[1]
 $tenantID = ($data[1].split("="))[1]
 $authCertThumb = ($data[2].split("="))[1]
 
-Connect-MGGraph -ClientId $appID -TenantId $tenantID -CertificateThumbprint $authCertThumb -nowelcome
+Connect-MgGraph -ClientId $appID -TenantId $tenantID -CertificateThumbprint $authCertThumb -nowelcome
 ```
 
 ```PowerShell
@@ -99,9 +99,9 @@ $clientsecretCredential = New-Object `
 Connect-MgGraph -TenantId $tenantID -ClientSecretCredential $clientsecretCredential -nowelcome
 ```
 
-Once successfully authenticated, you can verify the session permissions by running the Get-MgContext cmdlet ensuring you see the permissions consented to previously:
+Once successfully authenticated, you can verify the session permissions by running the **Get-MgContext** cmdlet ensuring you see the permissions consented to previously:
 
-![Results from the PowerShell Get-MGContext cmdlet](/content/images/1-get_mgcontext.png)
+![Results from the PowerShell Get-MGContext cmdlet]({attach}/images/1-get_mgcontext.png)
 
 Now that you have successfuly authenticated, the next step is to creat the external connection. Think of this as an empty container that will eventually hold the Schema configuration and the ingested external items. The necessary cmdlet from the Graph PowerShell SDK is **New-MgExternalConnection**. You'll need to pass in three values: the Name, ID, and Description for the Copilot Connector:
 
@@ -140,7 +140,7 @@ $schemaParams = @{
 Update-MgExternalConnectionSchema -ExternalConnectionId $ConnectionName -BodyParameter $schemaParams
 ```
 
-⭐⭐ It should be noted at this point that the Schema creation process can take between 5 and 15 minutes. The documentation recomends using the location response header to get the current status of the schema creation operation⭐⭐
+⭐⭐ **It should be noted at this point that the Schema creation process can take between 5 and 15 minutes. The documentation recomends using the location response header to get the current status of the schema creation operation** ⭐⭐
 
 With the first two steps complete, you have the shell of a Copilot connector and are ready to write items. Rather than connect to an actual external API, to keep this first attempt simple, I used Copilot to create a .CSV list of fictional companies with a discription for each. The script reads that .CSV file and creates new items for each object, mapping properties to the simple schema I created, using a GUID as the item ID and setting the ACL to allow access for everyone:
 

@@ -7,6 +7,7 @@ SITELOGO = "/images/MKLogo.png"
 FAVICON = "images/favicon.png"
 
 PATH = "content"
+STATIC_PATHS = ["images"]
 TIMEZONE = 'America/Denver'
 DEFAULT_LANG = 'EN'
 
