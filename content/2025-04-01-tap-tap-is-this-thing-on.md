@@ -5,7 +5,7 @@ date: 2025-04-01 1:01
 tags: Update
 categories: Personal Blog, Blog
 status: published
-cover: images/GCAdventure.png
+cover: images/isthison.png
 ---
 
 In a previous lifetime, I used to blog about all the different things that I've learned or the things that I was working on. At the time, I really enjoyed it

@@ -43,7 +43,7 @@
         },
         {
           "title": "preview",
-          "name": "Cover",
+          "name": "cover",
           "type": "image"
         }
       ]
@@ -75,5 +75,15 @@
     "modified",
     "date",
     "title"
+  ],
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "content",
+      "path": "[[workspace]]/content"
+    },
+    {
+      "title": "content",
+      "path": "[[workspace]]/content"
+    }
   ]
 }

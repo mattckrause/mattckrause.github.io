@@ -24,6 +24,14 @@
       {% import 'partial/translations.html' as translations with context %}
       {{ translations.translations_for(article) }}
     {% endif %}
+    <div class="article-image">
+        <a href="{{ SITEURL }}/{{ article.url }}">
+          {% if 'cover' in article.metadata %}
+            <img src="{{ SITEURL }}/{{ article.metadata['cover'] }}"/>
+          {% else %}
+            <img src="{{ SITEURL }}/static/images/default-article-image.png"/>
+          {% endif %}
+    </div>
     <h1 id="{{ article.slug }}">{{ article.title }}</h1>
     <p>
       {{ _('Posted on %(when)s in %(category)s',

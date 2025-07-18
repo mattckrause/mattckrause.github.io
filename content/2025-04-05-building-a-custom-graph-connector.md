@@ -1,5 +1,5 @@
 ---
-Cover: /images/GCAdventure.png
+cover: images/GCAdventure.png
 status: draft
 date: 2025-07-18 17:29
 title: My Adventure in Building a Custom Copilot Connector - Part 1
