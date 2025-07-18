@@ -4,7 +4,7 @@ SITETITLE = "Matt Krause"
 SITESUBTITLE = "Matt Krause's personal blog"
 SITEDESCRIPTION = "Matt Krause's personal blog"
 SITELOGO = "/images/MKLogo.png"
-FAVICON = "images/favicon.png"
+FAVICON = "/images/favicon.png"
 
 PATH = "content"
 STATIC_PATHS = ["images"]
