@@ -9,6 +9,7 @@ keywords: Copilot Connector
 category: Tech Blog
 ---
 
+***
 
 Microsoft Copilot is a useful piece of technology. Having a large language model (LLM) grounded in your Microsoft 365 data brings clear benefits. But it’s important to recognize that not all your data lives within your M365 tenant. That’s where Copilot extensibility steps in. It gives you the ability to expand Copilot’s functionality in a few key ways.
 
@@ -18,7 +19,7 @@ For now, I want to focus on Copilot connectors. More specifically, building my o
 
 Believe it or not, I’m **NOT** a developer. So when I started this journey, I couldn’t just dive in and build a connector from scratch. I had to take it step by step. Fortunately, I am comfortable with PowerShell and familiar with Graph APIs, so that’s where I began. As a learning exercise, it turned out to be a great approach. It allowed me to build incrementally on what I already knew and ultimately get a simple connector up and running in my dev environment.
 
---- 
+***
 
 ## Copilot Connector Initial Goal
 
@@ -34,7 +35,7 @@ In additional blog posts, I'll document a more indepth process including things 
 - Hosting the solution in Azure App Services.
 - Building a deployment process.
 
---- 
+***
 
 ## Getting started
 
@@ -64,6 +65,8 @@ You'll need to ensure you have the correct permissions assigned **AND** consente
 - ExternalItem.ReadWriet.OwnedBy
 
 ![Image showing the required Graph permissions shown in the app registration including that they have been granted admin consent]({attach}/images/1-perms.png)
+
+***
 
 ## The PowerShell Commands
 
@@ -162,6 +165,8 @@ Import-Csv -Path "C:\fictitious_companies.csv" | ForEach-Object {
     Set-MgExternalConnectionItem -ExternalConnectionId "test" -ExternalItemId (New-Guid) -BodyParameter $params
 }
 ```
+
+***
 
 ## Conclusion
 
