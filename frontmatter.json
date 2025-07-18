@@ -32,6 +32,11 @@
           "type": "tags"
         },
         {
+          "title": "Category",
+          "name": "category",
+          "type": "string"
+        },
+        {
           "title": "categories",
           "name": "categories",
           "type": "categories"

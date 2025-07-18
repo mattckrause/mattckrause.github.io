@@ -5,8 +5,8 @@ date: 2025-07-18 17:29
 title: My Adventure in Building a Custom Copilot Connector - Part 1
 description: A blog post covering the process I followed to build my first custom Copilot connector.
 tags: Copilot connectors, custom connector, Microsoft Copilot, Microsoft Graph, PowerShell
-categories: Blog, Tech Blog
 keywords: Copilot Connector
+category: Tech Blog
 ---
 
 
@@ -17,6 +17,8 @@ At a high level, Copilot extensibility lets you expand either the knowledge (the
 For now, I want to focus on Copilot connectors. More specifically, building my own custom connector to ingest some external content.
 
 Believe it or not, I’m **NOT** a developer. So when I started this journey, I couldn’t just dive in and build a connector from scratch. I had to take it step by step. Fortunately, I am comfortable with PowerShell and familiar with Graph APIs, so that’s where I began. As a learning exercise, it turned out to be a great approach. It allowed me to build incrementally on what I already knew and ultimately get a simple connector up and running in my dev environment.
+
+--- 
 
 ## Copilot Connector Initial Goal
 
@@ -31,6 +33,8 @@ In additional blog posts, I'll document a more indepth process including things 
 - Migrating to a programming language to add more functionality.
 - Hosting the solution in Azure App Services.
 - Building a deployment process.
+
+--- 
 
 ## Getting started
 

@@ -1,12 +1,13 @@
 ---
 title: Tap... Tap... Is This Thing On?
 description: Introduction to my new blog
-date: 2025-04-01 1:01
-tags: Update
-categories: Personal Blog, Blog
+date: 2025-04-01 6:00
 status: published
+tags: Update
+category: Personal Blog
 cover: images/isthison.png
 ---
+
 
 In a previous lifetime, I used to blog about all the different things that I've learned or the things that I was working on. At the time, I really enjoyed it
 because it provided me a method to support others that were maybe facing the same issues that I was. Additionally, it "forced" me to make sure I really
