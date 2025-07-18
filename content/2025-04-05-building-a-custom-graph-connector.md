@@ -3,6 +3,7 @@ title: My Adventure in Building a Custom Copilot Connector - Part 1
 description: The process I went through in building a custom Copilot connector. Part 1 focusing on quick and dirty Powershell steps to get a custom connector up and running.
 date: 2025-07-16T22:36:05.686Z
 status: draft
+Cover: /content/images/GCAdventure
 preview: /content/images/GCAdventure.png
 tags:
     - Custom Connector

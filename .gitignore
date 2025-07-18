@@ -1,0 +1,7 @@
+﻿# Ignore file for my blog
+Output/
+.venv/
+.vscode/
+.frontmatter/
+frontmatter.json
+__pycache__/
