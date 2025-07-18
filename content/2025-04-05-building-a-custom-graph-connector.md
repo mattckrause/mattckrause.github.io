@@ -1,5 +1,5 @@
 ---
-Cover: /content/images/GCAdventure.png
+Image: /content/images/GCAdventure.png
 status: draft
 date: 2025-07-18 17:29
 title: My Adventure in Building a Custom Copilot Connector - Part 1
@@ -138,7 +138,7 @@ Update-MgExternalConnectionSchema -ExternalConnectionId $ConnectionName -BodyPar
 With the first two steps complete, you have the shell of a Copilot connector and are ready to write items. Rather than connect to an actual external API, to keep this first attempt simple, I used Copilot to create a .CSV list of fictional companies with a discription for each. The script reads that .CSV file and creates new items for each object, mapping properties to the simple schema I created, using a GUID as the item ID and setting the ACL to allow access for everyone:
 
 ```PowerShell
-Import-Csv -Path "C:\github\MyScripts\GraphAPI\PS_SDK\ExternalItems\fictitious_companies.csv" | ForEach-Object {
+Import-Csv -Path "C:\fictitious_companies.csv" | ForEach-Object {
         $params = @{
             acl = @(
                 @{

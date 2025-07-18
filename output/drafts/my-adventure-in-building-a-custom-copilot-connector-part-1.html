@@ -53,7 +53,7 @@
   <meta property="article:tag" content="Microsoft Copilot"/>
   <meta property="article:tag" content="Microsoft Graph"/>
   <meta property="article:tag" content="PowerShell"/>
-  <meta property="og:image" content="/">
+  <meta property="og:image" content="/images/MKLogo.png">
 
   <title>Matt Krause &ndash; My Adventure in Building a Custom Copilot Connector - Part 1</title>
 
@@ -252,7 +252,7 @@
 
 <p>⭐⭐ <strong>It should be noted at this point that the Schema creation process can take between 5 and 15 minutes. The documentation recomends using the location response header to get the current status of the schema creation operation</strong> ⭐⭐</p>
 <p>With the first two steps complete, you have the shell of a Copilot connector and are ready to write items. Rather than connect to an actual external API, to keep this first attempt simple, I used Copilot to create a .CSV list of fictional companies with a discription for each. The script reads that .CSV file and creates new items for each object, mapping properties to the simple schema I created, using a GUID as the item ID and setting the ACL to allow access for everyone:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">Import-Csv</span> <span class="n">-Path</span> <span class="s2">&quot;C:\github\MyScripts\GraphAPI\PS_SDK\ExternalItems\fictitious_companies.csv&quot;</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nb">Import-Csv</span> <span class="n">-Path</span> <span class="s2">&quot;C:\fictitious_companies.csv&quot;</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
         <span class="nv">$params</span> <span class="p">=</span> <span class="p">@{</span>
             <span class="n">acl</span> <span class="p">=</span> <span class="p">@(</span>
                 <span class="p">@{</span>
