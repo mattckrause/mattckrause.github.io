@@ -32,16 +32,6 @@
           "type": "tags"
         },
         {
-          "title": "Category",
-          "name": "category",
-          "type": "string"
-        },
-        {
-          "title": "categories",
-          "name": "categories",
-          "type": "categories"
-        },
-        {
           "title": "keywords",
           "name": "keywords",
           "type": "string"
@@ -60,7 +50,6 @@
   "frontMatter.taxonomy.dateFormat": "YYYY-MM-DD H:mm",
   "frontMatter.taxonomy.commaSeparatedFields": [
     "tags",
-    "categories",
     "keywords"
   ],
   "frontMatter.content.draftField": {
@@ -76,16 +65,11 @@
   "frontMatter.taxonomy.seoDescriptionField": "summary",
   "frontMatter.taxonomy.noPropertyValueQuotes": [
     "tags",
-    "categories",
     "modified",
     "date",
     "title"
   ],
   "frontMatter.content.pageFolders": [
-    {
-      "title": "content",
-      "path": "[[workspace]]/content"
-    },
     {
       "title": "content",
       "path": "[[workspace]]/content"
