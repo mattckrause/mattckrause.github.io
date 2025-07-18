@@ -1,11 +1,11 @@
 ---
-Cover: /content/images/GCAdventure.png
+Cover: /images/GCAdventure.png
 status: draft
 date: 2025-07-18 17:29
 title: My Adventure in Building a Custom Copilot Connector - Part 1
 description: A blog post covering the process I followed to build my first custom Copilot connector.
 tags: Copilot connectors, custom connector, Microsoft Copilot, Microsoft Graph, PowerShell
-categories: Blog
+categories: Blog, Tech Blog
 keywords: Copilot Connector
 ---
 
