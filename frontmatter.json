@@ -7,36 +7,19 @@
       "previewPath": null,
       "fields": [
         {
-          "title": "Title",
+          "title": "title",
           "name": "title",
           "type": "string"
         },
         {
-          "title": "Description",
+          "title": "description",
           "name": "description",
           "type": "string"
         },
         {
-          "title": "Publishing date",
+          "title": "date",
           "name": "date",
-          "type": "datetime",
-          "default": "{{now}}",
-          "isPublishDate": true
-        },
-        {
-          "title": "Content preview",
-          "name": "preview",
-          "type": "image"
-        },
-        {
-          "title": "Tags",
-          "name": "tags",
-          "type": "tags"
-        },
-        {
-          "title": "Categories",
-          "name": "categories",
-          "type": "categories"
+          "type": "datetime"
         },
         {
           "title": "status",
@@ -44,14 +27,53 @@
           "type": "string"
         },
         {
+          "title": "tags",
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "title": "categories",
+          "name": "categories",
+          "type": "categories"
+        },
+        {
           "title": "keywords",
           "name": "keywords",
-          "type": "choice",
-          "choices": [
-            "Copilot Connector"
-          ]
+          "type": "string"
+        },
+        {
+          "title": "preview",
+          "name": "Cover",
+          "type": "image"
         }
       ]
     }
+  ],
+  "frontMatter.preview.host": "http://localhost:8000",
+  "frontMatter.website.host": "https://mattckrause.github.io",
+  "frontMatter.framework.startCommand": "Pelican -r -l",
+  "frontMatter.taxonomy.dateFormat": "YYYY-MM-DD H:mm",
+  "frontMatter.taxonomy.commaSeparatedFields": [
+    "tags",
+    "categories",
+    "keywords"
+  ],
+  "frontMatter.content.draftField": {
+    "name": "draft",
+    "type": "choice",
+    "choices": [
+      "draft",
+      "hidden",
+      "published"
+    ]
+  },
+  "frontMatter.taxonomy.modifiedField": "modified",
+  "frontMatter.taxonomy.seoDescriptionField": "summary",
+  "frontMatter.taxonomy.noPropertyValueQuotes": [
+    "tags",
+    "categories",
+    "modified",
+    "date",
+    "title"
   ]
 }

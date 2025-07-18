@@ -1,12 +1,11 @@
 ---
 title: Tap... Tap... Is This Thing On?
 description: Introduction to my new blog
-date: 2025-04-01T01:01:01.600Z
-preview: ""
-draft: false
-tags: []
-categories:
-    - Blog
+date: 2025-04-01 1:01
+tags: ""
+categories: Blog
+status: published
+Cover: /content/images/GCAdventure.png
 ---
 
 In a previous lifetime, I used to blog about all the different things that I've learned or the things that I was working on. At the time, I really enjoyed it

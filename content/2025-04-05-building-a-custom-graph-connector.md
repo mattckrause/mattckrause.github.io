@@ -1,22 +1,14 @@
 ---
-title: My Adventure in Building a Custom Copilot Connector - Part 1
-description: The process I went through in building a custom Copilot connector. Part 1 focusing on quick and dirty Powershell steps to get a custom connector up and running.
-date: 2025-07-16T22:36:05.686Z
+Cover: /content/images/GCAdventure.png
 status: draft
-Cover: /content/images/GCAdventure
-preview: /content/images/GCAdventure.png
-tags:
-    - Custom Connector
-    - Extensibility
-    - Graph API
-    - Microsoft Copilot
-    - PowerShell
-    - Tech Blog
-categories:
-    - Blog
-keywords:
-    - Copilot Connector
+date: 2025-07-18 17:29
+title: My Adventure in Building a Custom Copilot Connector - Part 1
+description: A blog post covering the process I followed to build my first custom Copilot connector.
+tags: Copilot connectors, custom connector, Microsoft Copilot, Microsoft Graph, PowerShell
+categories: Blog
+keywords: Copilot Connector
 ---
+
 
 Microsoft Copilot is a useful piece of technology. Having a large language model (LLM) grounded in your Microsoft 365 data brings clear benefits. But it’s important to recognize that not all your data lives within your M365 tenant. That’s where Copilot extensibility steps in. It gives you the ability to expand Copilot’s functionality in a few key ways.
 
