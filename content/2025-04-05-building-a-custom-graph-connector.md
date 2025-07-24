@@ -11,11 +11,11 @@ category: Tech Blog
 
 ***
 
-Microsoft Copilot is a useful piece of technology. Having a large language model (LLM) grounded in your Microsoft 365 data brings clear benefits. But it’s important to recognize that not all your data lives within your M365 tenant. That’s where Copilot extensibility steps in. It gives you the ability to expand Copilot’s functionality in a few key ways.
+Microsoft Copilot is a game changer for productivity, especially when it’s grounded in your Microsoft 365 data. But it’s important to recognize that not all your data lives within your M365 tenant. That’s where Copilot extensibility provides a clear benefit by giving you the ability to expand Copilot’s functionality in key ways.
 
-At a high level, Copilot extensibility lets you expand either the knowledge (the data Copilot is grounded on) or the skills (the tasks Copilot can perform). Copilot connectors (previously Graph connectors) allow you to extend Copilot’s knowledge, while agents can extend both knowledge and actions. It's a bit nuanced, bue each option has its pros and cons, and there are definitely scenarios where one solution makes more sense over another, but I’ll save a detailed comparison for another post.
+At a high level, Copilot extensibility lets you expand either the knowledge (the data Copilot is grounded on) or the skills (the tasks Copilot can perform). Copilot connectors (previously Graph connectors) allow you to extend Copilot’s knowledge, while agents can extend both knowledge and actions. It's a bit nuanced, but each option has its pros and cons, and there are definitely scenarios where one solution makes more sense over another, but I’ll save a detailed comparison for another post.
 
-For now, I want to focus on Copilot connectors. More specifically, building my own custom connector to ingest some external content into my M365 tenant boundry to make use of Copilot and the semantic index.
+For now, I want to focus on Copilot connectors. More specifically, building my own custom connector to ingest some external content into my M365 tenant boundary to make use of Copilot and the semantic index.
 
 Believe it or not, I’m **NOT** a developer. So when I started this journey, I couldn’t just dive in and build a connector from scratch. I had to take it step by step. Fortunately, I am comfortable with PowerShell and familiar with Graph APIs, so that’s where I began. As a learning exercise, it turned out to be a great approach. It allowed me to build incrementally on what I already knew and ultimately get a simple connector up and running in my dev environment.
 
@@ -28,13 +28,6 @@ To keep things manageable, I started with a simple plan:
 - Identify the specific APIs and permissions required.
 - Break the process down into minimal steps and build using PowerShell.
 - Deploy a POC Copilot connector to my environment.
-
-In upcoming blog posts, I’ll dive deeper into the process, covering topics such as:
-
-- Integration with Copilot and semantic index
-- Migrating to a programming language to add more functionality.
-- Hosting the solution in Azure App Services.
-- Building a deployment process.
 
 ***
 
@@ -63,7 +56,7 @@ You'll need to create either the certificate or secret here, depending on how yo
 You'll need to ensure you have the correct permissions assigned **AND** consented to. The required permissions (from documentation above) are:
 
 - ExternalConnection.ReadWrite.OwnedBy
-- ExternalItem.ReadWriet.OwnedBy
+- ExternalItem.ReadWrite.OwnedBy
 
 ![Image showing the required Graph permissions shown in the app registration including that they have been granted admin consent]({attach}/images/1-perms.png)
 
@@ -71,7 +64,7 @@ You'll need to ensure you have the correct permissions assigned **AND** consente
 
 ## The PowerShell Process
 
-The [Graph PowerShell SDK](https://learn.microsoft.com/powershell/microsoftgraph/installation?view=graph-powershell-1.0) provides an easy method to authenticate using the Entra app registreation previously created. For security purposes, I use a .env file to hold my auth data so I don't store any credentials in plain text. I've included two code snippets to show authentication using both Certificates and secrets. The snippets read the .env file and passes the appID, tenantID and certificate thumbprint/client secret to the **Connect-MgGraph** cmdlet:
+The [Graph PowerShell SDK](https://learn.microsoft.com/powershell/microsoftgraph/installation?view=graph-powershell-1.0) provides an easy method to authenticate using the Entra app registration previously created. For security purposes, I use a .env file to hold my auth data so I don't store any credentials in plain text. I've included two code snippets to show authentication using both Certificates and secrets. The snippets read the .env file and passes the appID, tenantID and certificate thumbprint/client secret to the **Connect-MgGraph** cmdlet:
 
 ```PowerShell
 #Authentication using Certificate
@@ -104,7 +97,7 @@ Once successfully authenticated, you can verify the session permissions by runni
 
 ![Results from the PowerShell Get-MGContext cmdlet]({attach}/images/1-get_mgcontext.png)
 
-Now that you have successfuly authenticated, the next step is to creat the external connection. Think of this as an empty container that will eventually hold the Schema configuration and the ingested external items. The necessary cmdlet from the Graph PowerShell SDK is **New-MgExternalConnection**. You'll need to pass in three values: the Name, ID, and Description for the Copilot Connector:
+Now that you have successfully authenticated, the next step is to create the external connection. Think of this as an empty container that will eventually hold the Schema configuration and the ingested external items. The necessary cmdlet from the Graph PowerShell SDK is **New-MgExternalConnection**. You'll need to pass in three values: the Name, ID, and Description for the Copilot Connector:
 
 ``` PowerShell
 $connectionName = "TestCopilotConnector"
@@ -141,9 +134,9 @@ $schemaParams = @{
 Update-MgExternalConnectionSchema -ExternalConnectionId $ConnectionName -BodyParameter $schemaParams
 ```
 
-⭐⭐ **It should be noted at this point that the Schema creation process can take between 5 and 15 minutes. The documentation recomends using the location response header to get the current status of the schema creation operation** ⭐⭐
+⭐⭐ **It should be noted at this point that the Schema creation process can take between 5 and 15 minutes. The documentation recommends using the location response header to get the current status of the schema creation operation** ⭐⭐
 
-With the first two steps complete, you have the shell of a Copilot connector and are ready to write items. Rather than connect to an actual external API, to keep this first attempt simple, I used Copilot to create a .CSV list of fictional companies with a discription for each. The script reads that .CSV file and creates new items for each object, mapping properties to the simple schema I created, using a GUID as the item ID and setting the ACL to allow access for everyone:
+With the first two steps complete, you have the shell of a Copilot connector and are ready to write items. Rather than connect to an actual external API, to keep this first attempt simple, I used Copilot to create a .CSV list of fictional companies with a description for each. The script reads that .CSV file and creates new items for each object, mapping properties to the simple schema I created, using a GUID as the item ID and setting the ACL to allow access for everyone:
 
 ```PowerShell
 Import-Csv -Path "C:\fictitious_companies.csv" | ForEach-Object {
@@ -167,8 +160,17 @@ Import-Csv -Path "C:\fictitious_companies.csv" | ForEach-Object {
 }
 ```
 
+If you are interested, I have a [PowerShell sample script](https://github.com/mattckrause/MSGraph/tree/Main/ExternalItems) I've written as an example of how you might put it all together in one expirence, rather than several separate scripts.
+
 ***
 
 ## Conclusion
 
-Obviously, this isn't intended to be a full blown Copilot connector. But it does provide the general process and it should help you to get your own Copilot connector up and running with relatively little effort. I have used PowerShell scripts based on this learning a handful of times to help get samples up and running quickly for testing and demos. I am providing a [sample script](https://github.com/mattckrause/MSGraph/tree/Main/ExternalItems) I've written as an example of how you might put it all together. As previously mentioned, this is the first post of a series where I build upon these learning to create a Copilot connector using Python that is hosted in Azure app services and enabled for Copilot consumption.
+This first step into building a custom Copilot connector was all about getting comfortable with the basics. Understanding the architecture, setting up authentication, and pushing some sample data into Microsoft 365. While it’s far from production-ready, this proof of concept gave me a solid foundation to build on.
+In the next posts, I’ll dive deeper into:
+
+- Designing and refining the schema to support richer, more useful data
+- Building a Python-based connector, hosted inAzure App Services
+- Enabling the connector for Copilot consumption and real-world use
+
+If you’re just getting started with custom Copilot connectors, I hope this gave you a helpful head start. Stay tuned for more.
