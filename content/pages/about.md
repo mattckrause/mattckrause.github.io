@@ -11,9 +11,7 @@ date: 2025-03-31T22:18:36.241Z
 
 ## Introduction
 
-Hi, I'm Matt Krause. I'm a Senior Product Manager on the Copilot Extensibility team at Microsoft, and a wanabe developer. I work to assist customers and
-partners deploying Copilot extensibility solutions, focusing mostly on Microsoft Graph connectors and Declarative agents. This is my place to share what
-I'm working on and what I'm learning about. I'm not great at blogging regulairly, but I hope that I can create something you find useful here.
+Hi, I'm Matt Krause. I'm a Senior Product Manager on the CAPE team at Microsoft, and a wannabe developer. I work with customers and partners to envision and build agents that work with Microsoft Copilot. This is my place to share what I'm working on and what I'm learning about. I'm not great at blogging regularly, but I hope that I can create something you find useful here.
 
 ---
 
@@ -24,9 +22,9 @@ started the process of migrating Exchange systems to Exchange Online (BPOS and L
 I again ran a multi-tenant Exchange deployment, and worked with smaller financial institutions to virtualize and right-size their server deployments into our
 cloud infrastructure.
 
-Once at Microsoft, I started as a Premier Field Engineer (PFE) focused on Exchange online. As Exchange migrations to the cloud started slowing down, I began
-focusing on Microsoft Graph. That lead me to the PM role I currently hold. Originally focued on Microsoft Graph and Microsoft Graph Data Connect (MGDC), I
-now focus on Microsoft Copilot extensibility.
+Once at Microsoft, I started as a Premier Field Engineer (PFE) focused on Exchange Online. As Exchange migrations to the cloud started slowing down, I began
+focusing on Microsoft Graph. That led me to a PM role originally focused on Microsoft Graph and Microsoft Graph Data Connect (MGDC), which later shifted to
+Copilot extensibility. I've since moved into a builder PM role with CAPE at Microsoft, helping customers envision and build agents to work with Copilot.
 
 ---
 
