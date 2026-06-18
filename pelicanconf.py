@@ -7,7 +7,11 @@ SITELOGO = "/images/MKLogo.png"
 FAVICON = "/images/favicon.png"
 
 PATH = "content"
-STATIC_PATHS = ["images"]
+STATIC_PATHS = ["images", "extras"]
+EXTRA_PATH_METADATA = {
+    "extras/custom.css": {"path": "static/custom.css"},
+}
+CUSTOM_CSS = "static/custom.css"
 TIMEZONE = 'America/Denver'
 DEFAULT_LANG = 'EN'
 
@@ -39,3 +43,7 @@ PYGMENTS_STYLE = "monokai"
 
 #theme
 THEME = "theme/Flex/"
+THEME_COLOR = "dark"
+THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE = False
+THEME_COLOR_ENABLE_USER_OVERRIDE = False
+USE_GOOGLE_FONTS = False

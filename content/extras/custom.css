@@ -1,0 +1,296 @@
+/* Modern dark developer blog overrides for Flex theme */
+
+/* Import modern fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* Root variables for easy tweaking */
+:root {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --accent: #58a6ff;
+  --accent-hover: #79c0ff;
+  --accent-subtle: rgba(88, 166, 255, 0.1);
+  --border: #30363d;
+  --green: #3fb950;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --radius: 8px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Base body */
+body, body.dark-theme {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Headings - monospace style */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono) !important;
+  font-weight: 600 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: -0.02em;
+  line-height: 1.3 !important;
+}
+
+h1 { font-size: 2.2rem !important; }
+h2 { font-size: 1.7rem !important; margin-top: 2rem; }
+h3 { font-size: 1.35rem !important; }
+
+/* Links */
+a {
+  color: var(--accent) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-hover) !important;
+  text-decoration: underline !important;
+}
+
+/* Sidebar */
+aside {
+  background: var(--bg-secondary) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+aside h1, aside h2 {
+  color: var(--text-primary) !important;
+}
+
+aside p {
+  color: var(--text-secondary) !important;
+}
+
+aside a {
+  color: var(--text-primary) !important;
+}
+
+aside a:hover {
+  color: var(--accent) !important;
+}
+
+/* Sidebar social icons */
+aside .social li a i {
+  color: var(--text-secondary) !important;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+aside .social li a:hover i {
+  color: var(--accent) !important;
+  transform: scale(1.15);
+}
+
+/* Main content area */
+main {
+  background-color: var(--bg-primary) !important;
+}
+
+/* Article styling */
+article {
+  border-bottom: 1px solid var(--border) !important;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+
+article header h2 a {
+  color: var(--text-primary) !important;
+  transition: color 0.2s ease;
+}
+
+article header h2 a:hover {
+  color: var(--accent) !important;
+}
+
+/* Article metadata */
+.post-info, .article-info {
+  color: var(--text-secondary) !important;
+  font-size: 0.9rem;
+}
+
+/* Code blocks */
+pre, code {
+  font-family: var(--font-mono) !important;
+  border-radius: var(--radius) !important;
+}
+
+pre {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border) !important;
+  padding: 1.2rem !important;
+  overflow-x: auto;
+  box-shadow: var(--shadow);
+}
+
+code {
+  background: var(--bg-tertiary) !important;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+pre code {
+  background: transparent !important;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Navigation */
+nav {
+  border-bottom: 1px solid var(--border) !important;
+}
+
+nav ul li a {
+  color: var(--text-secondary) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.85rem;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+
+nav ul li a:hover {
+  color: var(--accent) !important;
+  background: var(--accent-subtle);
+  text-decoration: none !important;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--border) !important;
+  color: var(--text-secondary) !important;
+}
+
+footer p {
+  color: var(--text-secondary) !important;
+}
+
+/* Tag/category pills */
+.tag-cloud a, .post-tags a, .post-category a {
+  background: var(--accent-subtle) !important;
+  color: var(--accent) !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 20px !important;
+  font-size: 0.8rem !important;
+  font-family: var(--font-mono) !important;
+  border: 1px solid var(--border) !important;
+  transition: all 0.2s ease;
+}
+
+.tag-cloud a:hover, .post-tags a:hover, .post-category a:hover {
+  background: var(--accent) !important;
+  color: var(--bg-primary) !important;
+  text-decoration: none !important;
+}
+
+/* Pagination */
+.pagination {
+  font-family: var(--font-mono) !important;
+}
+
+.pagination a {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  padding: 0.5rem 1rem !important;
+  color: var(--text-primary) !important;
+  transition: all 0.2s ease;
+}
+
+.pagination a:hover {
+  background: var(--accent-subtle) !important;
+  border-color: var(--accent) !important;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 3px solid var(--accent) !important;
+  background: var(--bg-secondary) !important;
+  padding: 1rem 1.5rem !important;
+  margin: 1.5rem 0 !important;
+  border-radius: 0 var(--radius) var(--radius) 0 !important;
+  color: var(--text-secondary) !important;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+}
+
+th {
+  background: var(--bg-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+tr:nth-child(even) {
+  background: var(--bg-secondary);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection highlight */
+::selection {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+/* Scrollbar styling (Webkit) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Images */
+article img {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  max-width: 100%;
+}
+
+/* Transitions for theme feel */
+* {
+  transition-property: background-color, border-color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+
+a, button, nav ul li a {
+  transition: all 0.2s ease !important;
+}
