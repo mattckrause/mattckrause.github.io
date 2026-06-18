@@ -303,7 +303,7 @@ For those keeping score, here's what changed between the PowerShell POC and this
 | Auth | Interactive Graph SDK | Client credentials flow |
 | Architecture | Separate scripts | Modular Python app |
 | Async handling | Manual wait | Custom middleware |
-| Testing | Hit real API | Dev Proxy for local mocking |
+| Testing | Hard coded .CSV | Real API |
 
 ***
 
